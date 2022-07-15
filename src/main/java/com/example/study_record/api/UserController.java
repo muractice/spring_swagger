@@ -21,15 +21,12 @@ public class UserController {
 
     @GetMapping("/Users")
     public UserList getUsers(){
-        return UserList.get()
-                .add(User.of("太郎","東京"))
-                .add(User.of("二郎","名古屋"))
-                .add(User.of("三郎","大阪"));
+        return userRepository.findAll();
     }
 
     @GetMapping("/user/{id}")
     public User getUser(@PathVariable Long id){
 //    public User getUser(@RequestParam(value = "input_id") int id){
-        return User.of("名前","住所");
+        return userRepository.findById(id);
     }
 }
