@@ -26,7 +26,8 @@ public class UserController {
 
     @GetMapping("/user/{id}")
     public User getUser(@PathVariable Long id){
-//    public User getUser(@RequestParam(value = "input_id") int id){
         return userRepository.findById(id);
     }
+
+//    public void postUser()
 }
