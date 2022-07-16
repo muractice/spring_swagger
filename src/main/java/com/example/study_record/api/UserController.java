@@ -7,6 +7,7 @@ import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.concurrent.atomic.AtomicLong;
@@ -29,5 +30,11 @@ public class UserController {
         return userRepository.findById(id);
     }
 
-//    public void postUser()
+    @PostMapping("/user")
+    public PostUserResponse postUser(){
+        User user = User.of("四郎","福岡");
+        userRepository.register(user);
+        return PostUserResponse.of( user);
+    }
+
 }

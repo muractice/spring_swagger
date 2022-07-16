@@ -19,4 +19,13 @@ public class UserRepositoryImpl implements UserRepository {
     public User findById(Long id) {
         return User.of("名前","住所");
     }
+
+    @Override
+    public long allocate() {
+        return 0;
+    }
+
+    @Override
+    public void register(User user) {
+    }
 }
