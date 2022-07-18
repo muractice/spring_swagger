@@ -17,7 +17,7 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public User findById(Long id) {
-        return User.of("名前","住所");
+        return User.of("太郎","東京");
     }
 
     @Override

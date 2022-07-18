@@ -20,14 +20,14 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
-    @GetMapping("/Users")
+    @GetMapping("/users")
     public UserList getUsers(){
         return userRepository.findAll();
     }
 
     @GetMapping("/user/{id}")
-    public User getUser(@PathVariable Long id){
-        return userRepository.findById(id);
+    public PostUserResponse getUser(@PathVariable Long id){
+        return PostUserResponse.of(userRepository.findById(id) );
     }
 
     @PostMapping("/user")
