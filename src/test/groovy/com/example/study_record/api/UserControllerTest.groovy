@@ -1,5 +1,6 @@
 package com.example.study_record.api
 
+import com.example.study_record.FixtureUser
 import groovyx.net.http.RESTClient
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
@@ -41,12 +42,14 @@ class UserControllerTest extends Specification {
 
         then:
         results.andExpect(status().isOk())
-        results.andExpect(jsonPath('$.users[0].name').value('太郎'))
-        results.andExpect(jsonPath('$.users[0].address').value('東京'))
-        results.andExpect(jsonPath('$.users[1].name').value('二郎'))
-        results.andExpect(jsonPath('$.users[1].address').value('名古屋'))
-        results.andExpect(jsonPath('$.users[2].name').value('三郎'))
-        results.andExpect(jsonPath('$.users[2].address').value('大阪'))
+        FixtureUser.assertUserList(results)
+
+//        results.andExpect(jsonPath('$.users[0].name').value('太郎'))
+//        results.andExpect(jsonPath('$.users[0].address').value('東京'))
+//        results.andExpect(jsonPath('$.users[1].name').value('二郎'))
+//        results.andExpect(jsonPath('$.users[1].address').value('名古屋'))
+//        results.andExpect(jsonPath('$.users[2].name').value('三郎'))
+//        results.andExpect(jsonPath('$.users[2].address').value('大阪'))
     }
 
     def 'Get User'() {
