@@ -28,6 +28,7 @@ public class UserController {
     @GetMapping("/users")
     public UserList getUsers(){
         logger.info("Called getUsers");
+//        logger.info("allocate():{}",userRepository.allocate());
         return userRepository.findAll();
     }
 
