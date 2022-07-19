@@ -4,6 +4,9 @@ import com.example.study_record.domain.User;
 import com.example.study_record.domain.UserList;
 import com.example.study_record.domain.UserRepository;
 import io.swagger.annotations.Api;
+import org.apache.juli.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,8 +23,11 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
+    Logger logger = LoggerFactory.getLogger(UserController.class);
+
     @GetMapping("/users")
     public UserList getUsers(){
+        logger.info("Called getUsers");
         return userRepository.findAll();
     }
 

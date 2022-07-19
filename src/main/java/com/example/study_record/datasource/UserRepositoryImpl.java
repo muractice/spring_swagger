@@ -28,4 +28,8 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public void register(User user) {
     }
+
+    public long allocate(){
+        
+    }
 }
