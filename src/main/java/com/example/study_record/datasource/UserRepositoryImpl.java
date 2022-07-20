@@ -27,7 +27,7 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public UserList findAll() {
-        String sql = "SELECT * FROM users ";
+        String sql = "SELECT * FROM users ORDER BY id";
         SqlParameterSource sqlParameterSource = new MapSqlParameterSource();
         List<User> userList = jdbcTemplate.query(sql,sqlParameterSource,userRowMapper);
 
@@ -36,9 +36,11 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public User findById(Long id) {
-        String sql = "SELECT * FROM users ";
-        SqlParameterSource sqlParameterSource = new MapSqlParameterSource();
-        return User.of(id,"太郎","東京");
+        String sql = "SELECT * FROM users WHERE id = :id";
+        SqlParameterSource sqlParameterSource = new MapSqlParameterSource()
+                .addValue("id",id);
+        User result = jdbcTemplate.queryForObject(sql,sqlParameterSource,userRowMapper);
+        return result;
     }
 
     @Override
