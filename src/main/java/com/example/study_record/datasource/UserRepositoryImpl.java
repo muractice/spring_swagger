@@ -5,6 +5,7 @@ import com.example.study_record.domain.UserList;
 import com.example.study_record.domain.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
@@ -28,8 +29,8 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public UserList findAll() {
         String sql = "SELECT * FROM users ORDER BY id";
-        SqlParameterSource sqlParameterSource = new MapSqlParameterSource();
-        List<User> userList = jdbcTemplate.query(sql,sqlParameterSource,userRowMapper);
+        SqlParameterSource param = new MapSqlParameterSource();
+        List<User> userList = jdbcTemplate.query(sql,param,userRowMapper);
 
         return UserList.of(userList);
     }
@@ -37,22 +38,29 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public User findById(Long id) {
         String sql = "SELECT * FROM users WHERE id = :id";
-        SqlParameterSource sqlParameterSource = new MapSqlParameterSource()
+        SqlParameterSource param = new MapSqlParameterSource()
                 .addValue("id",id);
-        User result = jdbcTemplate.queryForObject(sql,sqlParameterSource,userRowMapper);
+        User result = jdbcTemplate.queryForObject(sql,param,userRowMapper);
         return result;
     }
 
     @Override
     public long allocate() {
         String sql = "VALUES NEXT VALUE FOR user_id_seq";
-        SqlParameterSource sqlParameterSource = new MapSqlParameterSource();
-        long result = jdbcTemplate.queryForObject(sql,sqlParameterSource,Long.class);
+        SqlParameterSource param = new MapSqlParameterSource();
+        long result = jdbcTemplate.queryForObject(sql,param,Long.class);
         return result;
     }
 
     @Override
     public void register(User user) {
+        String sql = "INSERT INTO users(id,name,address) values(:id,:name,:address)";
+//        SqlParameterSource param = new BeanPropertySqlParameterSource(user);
+        SqlParameterSource param = new MapSqlParameterSource()
+                .addValue("id", user.getUserId())
+                .addValue("name", user.getName())
+                .addValue("address", user.getAddress());
+        jdbcTemplate.update(sql,param);
     }
 
 }

@@ -1,6 +1,8 @@
 package com.example.study_record.api
 
 import com.example.study_record.FixtureUser
+import com.example.study_record.domain.User
+import com.fasterxml.jackson.databind.ObjectMapper
 import groovyx.net.http.RESTClient
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
@@ -24,17 +26,34 @@ class UserControllerTest extends Specification {
 
     def 'Post User'() {
         when:
-        def results = mockMvc.perform(
+        def result = mockMvc.perform(
                 post("/user")
                 .param("name","四郎")
                 .param("address","福岡")
         )
 
+//        ObjectMapper mapper = new ObjectMapper();
+//        User refUser = mapper.readValue(result.getResponse().getContentAsString(), User.class);
+
+
         then:
-        results.andExpect(status().isOk())
-        results.andExpect(jsonPath('$.user.userId').value('4'))
-        results.andExpect(jsonPath('$.user.name').value('四郎'))
-        results.andExpect(jsonPath('$.user.address').value('福岡'))
+        result.andExpect(status().isOk())
+        result.andExpect(jsonPath('$.user.userId').value('4'))
+        result.andExpect(jsonPath('$.user.name').value('四郎'))
+        result.andExpect(jsonPath('$.user.address').value('福岡'))
+
+        def refResult = mockMvc.perform(
+                get("/user/"+ userId )
+        )
+
+        refResult.andExpect(status().isOk())
+        refResult.andExpect(jsonPath('$.user.userId').value(userId))
+        refResult.andExpect(jsonPath('$.user.name').value(name))
+        refResult.andExpect(jsonPath('$.user.address').value(address))
+
+        where:
+        userId   | name    | address
+        4        | '四郎'   | '福岡'
     }
 
     def 'Get Users'() {
