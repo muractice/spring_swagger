@@ -22,6 +22,9 @@ public class UserList {
         return new UserList();
     }
 
+    public static UserList of(List<User> users){
+        return new UserList(users);
+    }
     public UserList add(User user){
         List<User> tmpUsers = new ArrayList<>(users);
         tmpUsers.add(user);

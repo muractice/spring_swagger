@@ -23,7 +23,7 @@ dependencies {
 	implementation "org.spockframework:spock-spring:2.1-groovy-3.0"
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 
-	implementation 'com.h2database:h2:2.1.214'
+	providedRuntime 'com.h2database:h2:2.1.214'
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 //	testImplementation 'org.codehaus.groovy:groovy-all:3.0.8'

@@ -4,7 +4,6 @@ import com.example.study_record.domain.User;
 import com.example.study_record.domain.UserList;
 import com.example.study_record.domain.UserRepository;
 import io.swagger.annotations.Api;
-import org.apache.juli.logging.LogFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +27,6 @@ public class UserController {
     @GetMapping("/users")
     public UserList getUsers(){
         logger.info("Called getUsers");
-//        logger.info("allocate():{}",userRepository.allocate());
         return userRepository.findAll();
     }
 
@@ -38,8 +36,14 @@ public class UserController {
     }
 
     @PostMapping("/user")
-    public PostUserResponse postUser(){
-        User user = User.of("四郎","福岡");
+    public PostUserResponse postUser(String name, String address){
+        logger.info("Called postUser");
+
+        long userId = userRepository.allocate();
+        logger.info("allocate():{}",userId);
+
+        User user = User.of(userId,name,address);
+
         userRepository.register(user);
         return PostUserResponse.of( user);
     }

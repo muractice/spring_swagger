@@ -26,10 +26,13 @@ class UserControllerTest extends Specification {
         when:
         def results = mockMvc.perform(
                 post("/user")
+                .param("name","四郎")
+                .param("address","福岡")
         )
 
         then:
         results.andExpect(status().isOk())
+        results.andExpect(jsonPath('$.user.userId').value('4'))
         results.andExpect(jsonPath('$.user.name').value('四郎'))
         results.andExpect(jsonPath('$.user.address').value('福岡'))
     }
@@ -58,6 +61,7 @@ class UserControllerTest extends Specification {
 
         then:
         results.andExpect(status().isOk())
+        results.andExpect(jsonPath('$.user.userId').value(userId))
         results.andExpect(jsonPath('$.user.name').value( name ))
         results.andExpect(jsonPath('$.user.address').value( address ))
 
