@@ -22,6 +22,7 @@ dependencies {
 	implementation "org.spockframework:spock-core:2.1-groovy-3.0"
 	implementation "org.spockframework:spock-spring:2.1-groovy-3.0"
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	implementation 'org.flywaydb:flyway-core'
 
 	providedRuntime 'com.h2database:h2:2.1.214'
 
