@@ -1,10 +1,10 @@
-package com.example.study_record;
+package com.example.spring_swagger;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class StudyRecordApplicationTests {
+class SpringSwaggerApplicationTests {
 
 	@Test
 	void contextLoads() {

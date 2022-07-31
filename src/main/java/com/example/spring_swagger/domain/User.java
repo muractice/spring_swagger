@@ -1,6 +1,5 @@
-package com.example.study_record.domain;
+package com.example.spring_swagger.domain;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter

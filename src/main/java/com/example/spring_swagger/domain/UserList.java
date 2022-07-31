@@ -1,6 +1,4 @@
-package com.example.study_record.domain;
-
-import lombok.Getter;
+package com.example.spring_swagger.domain;
 
 import java.util.ArrayList;
 import java.util.Collections;

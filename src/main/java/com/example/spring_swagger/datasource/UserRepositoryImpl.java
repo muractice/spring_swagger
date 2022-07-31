@@ -1,11 +1,10 @@
-package com.example.study_record.datasource;
+package com.example.spring_swagger.datasource;
 
-import com.example.study_record.domain.User;
-import com.example.study_record.domain.UserList;
-import com.example.study_record.domain.UserRepository;
+import com.example.spring_swagger.domain.User;
+import com.example.spring_swagger.domain.UserList;
+import com.example.spring_swagger.domain.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;

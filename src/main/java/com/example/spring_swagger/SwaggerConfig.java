@@ -1,4 +1,4 @@
-package com.example.study_record;
+package com.example.spring_swagger;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,7 +17,7 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
 //                .apis(RequestHandlerSelectors.any())
-                .apis(RequestHandlerSelectors.basePackage("com.example.study_record"))
+                .apis(RequestHandlerSelectors.basePackage("com.example.spring_swagger"))
                 .paths(PathSelectors.any())
                 .build();
     }

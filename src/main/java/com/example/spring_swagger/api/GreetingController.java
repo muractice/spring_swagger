@@ -1,6 +1,6 @@
-package com.example.study_record.api;
+package com.example.spring_swagger.api;
 
-import com.example.study_record.domain.Greeting;
+import com.example.spring_swagger.domain.Greeting;
 import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;

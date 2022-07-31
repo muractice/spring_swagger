@@ -1,8 +1,8 @@
-package com.example.study_record.api;
+package com.example.spring_swagger.api;
 
-import com.example.study_record.domain.User;
-import com.example.study_record.domain.UserList;
-import com.example.study_record.domain.UserRepository;
+import com.example.spring_swagger.domain.User;
+import com.example.spring_swagger.domain.UserList;
+import com.example.spring_swagger.domain.UserRepository;
 import io.swagger.annotations.Api;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

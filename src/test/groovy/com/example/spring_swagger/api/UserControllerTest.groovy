@@ -1,9 +1,6 @@
-package com.example.study_record.api
+package com.example.spring_swagger.api
 
-import com.example.study_record.FixtureUser
-import com.example.study_record.domain.User
-import com.fasterxml.jackson.databind.ObjectMapper
-import groovyx.net.http.RESTClient
+import com.example.spring_swagger.FixtureUser
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.context.SpringBootTest

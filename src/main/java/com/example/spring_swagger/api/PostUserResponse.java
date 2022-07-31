@@ -1,6 +1,6 @@
-package com.example.study_record.api;
+package com.example.spring_swagger.api;
 
-import com.example.study_record.domain.User;
+import com.example.spring_swagger.domain.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

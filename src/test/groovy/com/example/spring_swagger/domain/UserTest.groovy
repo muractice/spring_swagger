@@ -1,4 +1,4 @@
-package com.example.study_record.domain
+package com.example.spring_swagger.domain
 
 import spock.lang.Specification
 
