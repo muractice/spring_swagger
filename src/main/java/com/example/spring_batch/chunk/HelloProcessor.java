@@ -19,10 +19,18 @@ public class HelloProcessor implements ItemProcessor<String,String> {
     @Value("#{StepExecutionContext['stepKey']}")
     private String stepValue;
 
+    @Value("#{jobParameters['require1']}")
+    private String require1;
+
+    @Value("#{jobParameters['option1']}")
+    private String option1;
+
     @BeforeStep
     public void beforeStep(StepExecution stepExecution){
         log.info("jobKey={}",jobValue);
         log.info("stepKey={}",stepValue);
+        log.info("require1={}",require1);
+        log.info("option1={}",option1);
     }
 
     @Override

@@ -1,12 +1,10 @@
 package com.example.spring_batch.config;
 
-import org.springframework.batch.core.Job;
-import org.springframework.batch.core.JobExecutionListener;
-import org.springframework.batch.core.Step;
-import org.springframework.batch.core.StepExecutionListener;
+import org.springframework.batch.core.*;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
+import org.springframework.batch.core.job.DefaultJobParametersValidator;
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.batch.item.ItemReader;
@@ -40,6 +38,19 @@ public class BatchConfigChunk {
     private StepExecutionListener stepListener;
 
     @Bean
+    public JobParametersValidator jobParametersValidator(){
+        DefaultJobParametersValidator validator = new DefaultJobParametersValidator();
+
+        String[] requireKeys = new String[]{"run.id","require1"};
+        validator.setRequiredKeys(requireKeys);
+
+        String[] optionKeys = new String[]{"option1"};
+        validator.setOptionalKeys(optionKeys);
+
+        return validator;
+    }
+
+    @Bean
     public Step chunkStep(){
         return stepBuilderFactory.get("HelloChunkStep")
                 .<String,String>chunk(1)
@@ -56,6 +67,7 @@ public class BatchConfigChunk {
                 .incrementer(new RunIdIncrementer())
                 .start(chunkStep())
                 .listener(jobListener)
+                .validator(jobParametersValidator())
                 .build();
     }
 
