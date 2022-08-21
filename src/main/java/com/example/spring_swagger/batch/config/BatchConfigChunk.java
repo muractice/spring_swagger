@@ -1,4 +1,4 @@
-package com.example.spring_batch.config;
+package com.example.spring_swagger.batch.config;
 
 import org.springframework.batch.core.*;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;

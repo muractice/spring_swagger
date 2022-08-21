@@ -1,4 +1,4 @@
-package com.example.spring_batch.chunk;
+package com.example.spring_swagger.batch.chunk;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.StepExecution;
