@@ -1,4 +1,4 @@
-package com.example.spring_swagger.batch.config;
+package com.example.batch.config;
 
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;

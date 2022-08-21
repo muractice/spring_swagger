@@ -1,4 +1,4 @@
-package com.example.spring_swagger.batch.listener;
+package com.example.batch.listener;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.JobExecution;

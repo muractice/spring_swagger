@@ -1,4 +1,4 @@
-package com.example.spring_swagger.batch.tasklet;
+package com.example.batch.tasklet;
 
 //import groovy.util.logging.Slf4j;
 import org.springframework.batch.core.StepContribution;
