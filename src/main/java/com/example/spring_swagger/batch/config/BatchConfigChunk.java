@@ -41,8 +41,8 @@ public class BatchConfigChunk {
     public JobParametersValidator jobParametersValidator(){
         DefaultJobParametersValidator validator = new DefaultJobParametersValidator();
 
-        String[] requireKeys = new String[]{"run.id","require1"};
-        validator.setRequiredKeys(requireKeys);
+//        String[] requireKeys = new String[]{"run.id","require1"};
+//        validator.setRequiredKeys(requireKeys);
 
         String[] optionKeys = new String[]{"option1"};
         validator.setOptionalKeys(optionKeys);
