@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  app:
+    container_name: app
+#    working_dir: /app
+    tty: true
+    build:
+      dockerfile: docker/app/Dockerfile
+      context: .
+    ports:
+      - 18080:8080
+    command: java -jar spring_swagger-0.0.1.war
+
+#  image: openjdk:11
+#  container_name: app
+#    #  env_file:
+#    #    - ./mysql/db.env # mysqlと同じものを指定
+#  tty: true
+#  working_dir: /app
+#  volumes:
+#    - /Users/murahide/git/practice/spring/spring_swagger:/app # Spring Bootのプロジェクト
+#  ports:
+#    - 18080:8080 # 通常実行
+#    - 5050:5050 # デバッグ用
+#  command: java -jar build/libs/spring_swagger-0.0.1.war
